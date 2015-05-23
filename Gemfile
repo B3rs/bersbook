@@ -29,6 +29,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use devise for user authentication
 gem 'devise', '~> 3.4.1'
 
+# Use gravatar for users avatar
+gem 'gravatarify', '~> 3.0.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
