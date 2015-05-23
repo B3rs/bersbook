@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
 	validates_presence_of :username
 	validates_uniqueness_of :username
+
+	def request_friendship(to_user)
+		self.friendships.create(friend: to_user)
+	end
 end
