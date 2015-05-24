@@ -15,7 +15,19 @@ class User < ActiveRecord::Base
 	end
 
 	def active_friends
-		self.friendships.active.map(&:friend) + self.inverse_friendships.active.map(&:user)
+		# This is really ugly, I will figure out something
+		#self.friendships.active.map(&:friend) + self.inverse_friendships.active.map(&:user)
+		# Maybe this is better!
+		User.where('"users"."id" IN 
+	      (
+	        SELECT "friendships"."user_id" FROM "friendships"
+	        WHERE "friendships"."friend_id" = ? AND "friendships"."state" = "active"
+	      )
+	      OR "users"."id" IN
+	      (
+	        SELECT "friendships"."friend_id" FROM "friendships" 
+	        WHERE "friendships"."user_id" = ? AND "friendships"."state" = "active"
+	      )', self.id, self.id)
 	end
 
 	def pending_friend_requests_to
@@ -27,6 +39,7 @@ class User < ActiveRecord::Base
 	end
 
 	def friendship_status(to_user)
+		# Very ugly, does a query every time is called... better fix that later
 		friendship = Friendship.where(user_id: [self.id,to_user.id], friend_id: [self.id,to_user.id]).first
 		unless friendship
 			return 'not_friends'
