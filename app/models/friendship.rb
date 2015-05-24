@@ -3,7 +3,7 @@ class Friendship < ActiveRecord::Base
 	belongs_to :friend, class_name: 'User'
 
 	scope :active, -> {where(state: 'active')}
-	scope :pending, -> {where(state: 'pending')}
+	scope :pending, -> {where(state: 'active')}
 
 	def accept_friendship
 		self.update_attributes(state: 'active', friended_at: Time.now)
