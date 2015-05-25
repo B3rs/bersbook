@@ -32,6 +32,9 @@ gem 'devise', '~> 3.4.1'
 # Use gravatar for users avatar
 gem 'gravatarify', '~> 3.0.0'
 
+# Use public_activity to track user activities
+gem 'public_activity', '~>1.4.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

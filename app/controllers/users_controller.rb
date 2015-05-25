@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:show]
 
 	def show
+		@activities = PublicActivity::Activity.where(owner: @user) + PublicActivity::Activity.where(recipient: @user)
+			
 	end
 	
 	def index
