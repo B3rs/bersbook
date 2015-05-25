@@ -35,6 +35,9 @@ gem 'gravatarify', '~> 3.0.0'
 # Use public_activity to track user activities
 gem 'public_activity', '~>1.4.2'
 
+# Use auto_html to convert links and videos to html tags
+gem 'auto_html', '~>1.6.4'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
