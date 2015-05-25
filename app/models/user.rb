@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
 	def active_friends
 		# This is really ugly, I will figure out something
 		#self.friendships.active.map(&:friend) + self.inverse_friendships.active.map(&:user)
-		# Maybe this is better!
+
+		# This is surely better!
 		User.where('"users"."id" IN 
 	      (
 	        SELECT "friendships"."user_id" FROM "friendships"
@@ -52,6 +53,11 @@ class User < ActiveRecord::Base
           		return "requested"
           	end
         end
+	end
+
+	def friendship_relation(to_user)
+		# Ugly as well
+		Friendship.where(user_id: [self.id, to_user.id], friend_id: [self.id, to_user.id]).first
 	end
 
 end
