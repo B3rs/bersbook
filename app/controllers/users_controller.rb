@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 	def show
 		@activities = PublicActivity::Activity.where(owner: @user) + PublicActivity::Activity.where(recipient: @user)
-			
+    @posts = @user.posts
 	end
 	
 	def index
@@ -23,6 +23,6 @@ class UsersController < ApplicationController
 	private
 
 	def set_user
-		@user = User.find_by(username: params[:id])
-  	end
+		@user = User.includes(:posts).find_by(username: params[:id])
+  end
 end
