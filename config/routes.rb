@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root "pages#home"
 
+  resources :activities, only: [:index]
   resources :users, only: [:show, :index]
   resources :posts, only: [:create, :update, :destroy, :edit]
   resources :friendships, only: [:create, :destroy, :accept] do
