@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:show]
 
 	def show
-		@activities = PublicActivity::Activity.where(owner: @user) + PublicActivity::Activity.where(recipient: @user)
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
+    @activities = PublicActivity::Activity.where(owner: @user).order(created_at: :desc)
 	end
 	
 	def index

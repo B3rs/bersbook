@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     respond_to do |format|
       if @post.save
+        @post.create_activity key: 'post.created', owner: @post.user
         format.html { redirect_to user_path(@post.user.username), notice: "Post created" }
       else
         format.html { redirect_to user_path(@post.user.username), notice: "Something went wrong" }
