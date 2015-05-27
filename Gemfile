@@ -59,9 +59,21 @@ group :development, :test do
 
 	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 	gem 'spring'
+
+  # Use awesome print for better console printing
+  gem 'awesome_print', require: 'ap'
+
+  # Use quiet assets to hide assets requests
+  gem 'quiet_assets', '~> 1.1.0'
 end
 
 group :production do
-	# Use sqlite3 as the database for Active Record, to be replaced with postgre as we are ready to go in production
-	gem 'sqlite3'
+  # Use postgreSQL for production production
+  gem 'pg', '~> 0.18.2'
+
+  # Use 12factor to send assets in heroku enviroments
+  gem 'rails_12factor', '~> 0.0.3'
+
+  # Use unicorn as production database
+  gem 'unicorn', '~> 4.9.0'
 end
