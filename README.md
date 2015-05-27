@@ -9,3 +9,5 @@ bundle install
 rails server
 ```
 
+_Demo:_
+[https://bersbook.herokuapp.com/](https://bersbook.herokuapp.com/)
