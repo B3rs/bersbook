@@ -18,7 +18,7 @@ body{
 	padding-top: 50px;
 }
 .alert {
-  posistion: absolute;
+  position: absolute;
   z-index: 1;
   width: 200px;
 }

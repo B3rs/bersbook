@@ -1,7 +1,12 @@
 <%= simple_form_for(@post || Post.new) do |f|%>
+    <div class="panel panel-info">
+      <div class="panel-heading">Post</div>
+      <div class="panel-body">
         <%= f.error_notification %>
         <%= f.input :content, required: true, label: false, placeholder: "What is going on?" %>
-
+      </div>
+      <div class="panel-footer">
         <%= f.button :submit, class: "btn btn-primary" %>
-
+      </div>
+    </div>
 <% end %>

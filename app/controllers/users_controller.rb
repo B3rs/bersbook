@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!, only:[:index]
+  before_action :get_counts, only:[:index]
 	before_action :set_user, only: [:show]
 
 	def show
@@ -21,6 +22,10 @@ class UsersController < ApplicationController
 	end
 
 	private
+  def get_counts
+    @friends_count = current_user.active_friends.count
+    @pending_count = current_user.inverse_friendships.pending.includes(:user).map(&:user).count
+  end
 
 	def set_user
 		@user = User.includes(:posts).find_by(username: params[:id])

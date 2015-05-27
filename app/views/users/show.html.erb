@@ -35,11 +35,11 @@
 				</div>
 			</div>
 		</div>
-		<!-- Post zone -->
-		<div class="col-md-6">
-          <%= render "posts/form" %>
-          <%= render @posts %>
-		</div>
+            <!-- Post zone -->
+            <div class="col-md-6">
+              <%= render "posts/panel_form" if current_user and current_user == @user %>
+              <%= render @posts %>
+            </div>
 		<!-- Profile activity -->
 		<div class="col-md-3">
 			<div class="panel panel-default">
