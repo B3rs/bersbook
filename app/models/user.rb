@@ -20,15 +20,15 @@ class User < ActiveRecord::Base
 		#self.friendships.active.map(&:friend) + self.inverse_friendships.active.map(&:user)
 
 		# This is surely better!
-		User.where('"users"."id" IN 
+		User.where('"users"."id" IN
 	      (
 	        SELECT "friendships"."user_id" FROM "friendships"
-	        WHERE "friendships"."friend_id" = ? AND "friendships"."state" = "active"
+	        WHERE "friendships"."friend_id" = ? AND "friendships"."state" = \'active\'
 	      )
 	      OR "users"."id" IN
 	      (
 	        SELECT "friendships"."friend_id" FROM "friendships" 
-	        WHERE "friendships"."user_id" = ? AND "friendships"."state" = "active"
+	        WHERE "friendships"."user_id" = ? AND "friendships"."state" = \'active\'
 	      )', self.id, self.id)
 	end
 
