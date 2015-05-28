@@ -6,10 +6,21 @@
 }
 
 .landing {
-  background: image-url('background.jpg') no-repeat center center fixed;
+  margin-top: -50px;
+  background: image-url('doge_background.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   height: 100vh;
+  .jumbotron{
+    margin-top: 20%;
+    background-color: transparent;
+    color: #ffffff;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  }
 }
